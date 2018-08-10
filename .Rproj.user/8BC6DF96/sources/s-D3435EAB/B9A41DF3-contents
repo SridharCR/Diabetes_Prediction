@@ -6,11 +6,14 @@ output: html_document
 ---
 
 ## Loading the required libraries
-```{r setup, include=FALSE}
+```{r}
 library(ggplot2)
+library(caTools)
+library(ROCR)
 ```
 
 ## Load the data
+The observations of the people are stored in a CSV format, named diabetes.csv.The data is loaded in the environment.Let's check how the data is structured.
 ```{r}
 data = read.csv("diabetes.csv")
 head(data)
@@ -28,47 +31,40 @@ corrplot(correlations, method="color")
 pairs(data, col=data$Outcome)
 ```
 
-## Logistic regression
+
+## Preparing the data
+
 ```{r}
-library(caTools)
 set.seed(88)
 split <- sample.split(data$Outcome, SplitRatio = 0.75)
-```
-
-```{r}
 dresstrain <- subset(data, split == TRUE)
 dresstest <- subset(data, split == FALSE)
-
 ```
 
+
+
+## Logistic regression
 ```{r}
 model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = dresstrain, family = binomial)
 summary(model)
 ```
 
 ```{r}
-predict <- predict(model, newdata = dresstest, type = 'response')
-predict
-```
+predict_train <- predict(model, type = 'response')
+predict_test <- predict(model, newdata = dresstest, type = 'response')
 
-
-```{r}
-table(dresstrain$Outcome, predict > 0.5)
 ```
 
 ```{r}
-library(ROCR)
-ROCRpred <- prediction(predict, dresstrain$Outcome)
+table(dresstrain$Outcome, predict_train > 0.5)
+```
+
+```{r}
+
+ROCRpred <- prediction(predict_train, dresstrain$Outcome)
 ROCRperf <- performance(ROCRpred, 'tpr','fpr')
 plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
 
 ```
 
-
-```{r}
-#plot glm
-
-ggplot(dresstrain, aes(x=Glucose, y=Outcome)) + geom_point() + 
-stat_smooth(method="glm", family="binomial", se=FALSE)
-```
 

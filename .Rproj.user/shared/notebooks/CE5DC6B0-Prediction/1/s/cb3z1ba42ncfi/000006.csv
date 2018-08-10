@@ -1,4 +1,4 @@
-"0","table(dresstrain$Outcome, predict > 0.5)"
+"0","table(dresstrain$Outcome, predict_train > 0.5)"
 "1","   
 "
 "1","   "

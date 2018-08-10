@@ -1,3 +1,4 @@
-"0","library(caTools)"
 "0","set.seed(88)"
 "0","split <- sample.split(data$Outcome, SplitRatio = 0.75)"
+"0","dresstrain <- subset(data, split == TRUE)"
+"0","dresstest <- subset(data, split == FALSE)"
