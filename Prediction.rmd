@@ -2,12 +2,16 @@
 title: "Prediction of Diabetes"
 author: "Sridhar"
 date: "August 8, 2018"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 
 ## Loading the required libraries
 ```{r}
 library(ggplot2)
+library(corrplot)
 library(caTools)
 library(ROCR)
 ```
@@ -21,7 +25,7 @@ head(data)
 
 ## Correlations
 ```{r}
-library(corrplot)
+
 correlations <- cor(data)
 corrplot(correlations, method="color")
 ```
