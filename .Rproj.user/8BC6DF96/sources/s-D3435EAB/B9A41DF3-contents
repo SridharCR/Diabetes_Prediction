@@ -18,13 +18,14 @@ head(data)
 
 ## Correlations
 ```{r}
-cormat <- round(cor(data),2)
-cormat
+library(corrplot)
+correlations <- cor(data)
+corrplot(correlations, method="color")
 ```
 
 ## Visualizations
 ```{r}
-ggplot(data,aes(Outcome)) + geom_bar()
+pairs(data, col=data$Outcome)
 ```
 
 ## Logistic regression
@@ -41,7 +42,7 @@ dresstest <- subset(data, split == FALSE)
 ```
 
 ```{r}
-model <- glm (Outcome ~ .-Insulin, data = dresstrain, family = binomial)
+model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = dresstrain, family = binomial)
 summary(model)
 ```
 
