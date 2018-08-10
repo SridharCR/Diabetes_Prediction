@@ -16,3 +16,50 @@ data = read.csv("diabetes.csv")
 head(data)
 ```
 
+## Correlations
+```{r}
+cormat <- round(cor(data),2)
+cormat
+```
+
+## Visualizations
+```{r}
+ggplot(data,aes(Outcome)) + geom_bar()
+```
+
+## Logistic regression
+```{r}
+library(caTools)
+set.seed(88)
+split <- sample.split(data$Outcome, SplitRatio = 0.75)
+```
+
+```{r}
+dresstrain <- subset(data, split == TRUE)
+dresstest <- subset(data, split == FALSE)
+
+```
+
+```{r}
+model <- glm (Outcome ~ .-Insulin, data = dresstrain, family = binomial)
+summary(model)
+```
+
+```{r}
+predict <- predict(model, type = 'response')
+```
+
+```{r}
+table(dresstrain$Outcome, predict > 0.5)
+```
+```{r}
+library(ROCR)
+ROCRpred <- prediction(predict, dresstrain$Outcome)
+ROCRperf <- performance(ROCRpred, 'tpr','fpr')
+plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
+#plot glm
+
+ggplot(dresstrain, aes(x=Insulin, y=Outcome)) + geom_point() + 
+stat_smooth(method="glm", family="binomial", se=FALSE)
+```
+
