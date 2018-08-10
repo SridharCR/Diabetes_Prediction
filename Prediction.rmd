@@ -1,0 +1,18 @@
+---
+title: "Prediction of Diabetes"
+author: "Sridhar"
+date: "August 8, 2018"
+output: html_document
+---
+
+## Loading the required libraries
+```{r setup, include=FALSE}
+library(ggplot2)
+```
+
+## Load the data
+```{r}
+data = read.csv("diabetes.csv")
+head(data)
+```
+

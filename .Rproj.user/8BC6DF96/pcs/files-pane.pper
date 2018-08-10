@@ -1,0 +1,9 @@
+{
+    "path" : "~/Diabetes_Prediction",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
