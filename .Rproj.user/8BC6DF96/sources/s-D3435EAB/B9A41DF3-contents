@@ -47,8 +47,10 @@ summary(model)
 ```
 
 ```{r}
-predict <- predict(model, type = 'response')
+predict <- predict(model, newdata = dresstest, type = 'response')
+predict
 ```
+
 
 ```{r}
 table(dresstrain$Outcome, predict > 0.5)
@@ -59,9 +61,14 @@ library(ROCR)
 ROCRpred <- prediction(predict, dresstrain$Outcome)
 ROCRperf <- performance(ROCRpred, 'tpr','fpr')
 plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
+
+```
+
+
+```{r}
 #plot glm
 
-ggplot(dresstrain, aes(x=Insulin, y=Outcome)) + geom_point() + 
+ggplot(dresstrain, aes(x=Glucose, y=Outcome)) + geom_point() + 
 stat_smooth(method="glm", family="binomial", se=FALSE)
 ```
 

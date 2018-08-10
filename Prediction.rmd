@@ -18,13 +18,14 @@ head(data)
 
 ## Correlations
 ```{r}
-cormat <- round(cor(data),2)
-cormat
+library(corrplot)
+correlations <- cor(data)
+corrplot(correlations, method="color")
 ```
 
 ## Visualizations
 ```{r}
-ggplot(data,aes(Outcome)) + geom_bar()
+pairs(data, col=data$Outcome)
 ```
 
 ## Logistic regression
@@ -41,13 +42,15 @@ dresstest <- subset(data, split == FALSE)
 ```
 
 ```{r}
-model <- glm (Outcome ~ .-Insulin, data = dresstrain, family = binomial)
+model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = dresstrain, family = binomial)
 summary(model)
 ```
 
 ```{r}
-predict <- predict(model, type = 'response')
+predict <- predict(model, newdata = dresstest, type = 'response')
+predict
 ```
+
 
 ```{r}
 table(dresstrain$Outcome, predict > 0.5)
@@ -58,9 +61,14 @@ library(ROCR)
 ROCRpred <- prediction(predict, dresstrain$Outcome)
 ROCRperf <- performance(ROCRpred, 'tpr','fpr')
 plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
+
+```
+
+
+```{r}
 #plot glm
 
-ggplot(dresstrain, aes(x=Insulin, y=Outcome)) + geom_point() + 
+ggplot(dresstrain, aes(x=Glucose, y=Outcome)) + geom_point() + 
 stat_smooth(method="glm", family="binomial", se=FALSE)
 ```
 

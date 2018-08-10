@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1533922783412.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "702BF857",
+    "lastKnownWriteTime" : 7598226927362142831,
+    "last_content_update" : 1533922783412,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "22E8939C",
+        "caption" : "dresstrain",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=dresstrain&cache_key=22E8939C",
+        "displayedObservations" : 576,
+        "environment" : "",
+        "object" : "dresstrain",
+        "preview" : 0,
+        "totalObservations" : 576,
+        "variables" : 9
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

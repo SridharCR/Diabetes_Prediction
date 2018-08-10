@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1533922785787.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "82CE8511",
+    "lastKnownWriteTime" : 3833180308419998817,
+    "last_content_update" : 1533922785787,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "77A296BE",
+        "caption" : "dresstest",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=dresstest&cache_key=77A296BE",
+        "displayedObservations" : 192,
+        "environment" : "",
+        "object" : "dresstest",
+        "preview" : 0,
+        "totalObservations" : 192,
+        "variables" : 9
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

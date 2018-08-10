@@ -1,4 +1,0 @@
-"0","#plot glm"
-"0","ggplot(dresstrain, aes(x=Insulin, y=Outcome)) + geom_point() + "
-"0","stat_smooth(method=""glm"", family=""binomial"", se=FALSE)"
-"2","Ignoring unknown parameters: family"
