@@ -1,11 +1,11 @@
-"0","model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = dresstrain, family = binomial)"
+"0","model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = data_train, family = binomial)"
 "0","summary(model)"
 "1","
 Call:
 "
 "1","glm(formula = Outcome ~ . - Pregnancies + Glucose + BloodPressure + 
     SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + 
-    Age, family = binomial, data = dresstrain)"
+    Age, family = binomial, data = data_train)"
 "1","
 
 "
