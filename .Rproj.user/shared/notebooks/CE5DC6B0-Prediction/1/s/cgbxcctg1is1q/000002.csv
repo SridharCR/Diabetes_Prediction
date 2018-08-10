@@ -1,0 +1,2 @@
+"0","dresstrain <- subset(data, split == TRUE)"
+"0","dresstest <- subset(data, split == FALSE)"

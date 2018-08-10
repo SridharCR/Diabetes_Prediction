@@ -52,6 +52,7 @@ predict <- predict(model, type = 'response')
 ```{r}
 table(dresstrain$Outcome, predict > 0.5)
 ```
+
 ```{r}
 library(ROCR)
 ROCRpred <- prediction(predict, dresstrain$Outcome)

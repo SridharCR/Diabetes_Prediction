@@ -1,0 +1,1 @@
+"0","ggplot(data,aes(Outcome)) + geom_bar()"

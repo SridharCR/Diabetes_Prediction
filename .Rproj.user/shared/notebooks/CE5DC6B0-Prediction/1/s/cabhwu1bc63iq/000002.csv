@@ -1,0 +1,4 @@
+"0","library(ROCR)"
+"0","ROCRpred <- prediction(predict, dresstrain$Outcome)"
+"0","ROCRperf <- performance(ROCRpred, 'tpr','fpr')"
+"0","plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))"
