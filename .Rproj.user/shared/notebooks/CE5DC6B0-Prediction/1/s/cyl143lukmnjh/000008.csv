@@ -1,0 +1,4 @@
+"0","pairs(data, col=data$Outcome) + theme_classic()
+"
+"1","NULL
+"

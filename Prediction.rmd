@@ -32,7 +32,11 @@ correlations
 corrplot(correlations, method="color")
 ```
 
-## Visualizations
+## Visualization
+Visualizations are used to grasp the structure of data and its relations,like how they vary and their 
+relationships with the otehr data.They are said to be EDA.
+
+A matrix of scatterplots is produce for this dataset.
 ```{r}
 pairs(data, col=data$Outcome)
 ```
@@ -91,8 +95,12 @@ while(i <= length(predict_test))
   i = i + 1;
 }
 compare <- data.frame(data_test$Outcome,predict_test_c)
-colnames(compare) <- c("Obseerved Values","PRedicted values")
+colnames(compare) <- c("Observed Values","Predicted values")
+ggplot(data = compare,aes(x = "Observed Values", y = "Predicted values")) + geom_abline() +
+  xlab("Observed Values") + ylab("Predicted values") + theme_classic()
 compare
 ```
 
+## Conclusion
 
+The results can be improved by applyting the feature scaling and data cleaning.From this project we predict the type 2 diabetes, commonly called as diabetes mellitus.As a result it can help to improve their health conditions.
