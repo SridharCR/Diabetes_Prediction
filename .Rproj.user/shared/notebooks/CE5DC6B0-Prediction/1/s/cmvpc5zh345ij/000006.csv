@@ -1,2 +1,0 @@
-"0","data = read.csv(""diabetes.csv"")"
-"0","head(data)"

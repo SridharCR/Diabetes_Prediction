@@ -12,7 +12,7 @@ output:
 
 
 ## Loading the required libraries
-```{r}
+```{r warning=FALSE}
 library(ggplot2)
 library(corrplot)
 library(caTools)
@@ -24,6 +24,8 @@ The observations of the people are stored in a CSV format, named diabetes.csv.Th
 ```{r}
 data = read.csv("diabetes.csv")
 head(data)
+summary(data)
+str(data)
 ```
 
 ## Correlations
@@ -42,6 +44,9 @@ relationships with the otehr data.They are said to be EDA.
 A matrix of scatterplots is produce for this dataset.
 ```{r}
 pairs(data, col=data$Outcome)
+```
+```{r}
+
 ```
 
 
