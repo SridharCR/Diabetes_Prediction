@@ -1,0 +1,2 @@
+"0","data = read.csv(""C:/Users/crsri/Documents/Diabetes_Prediction/Data/diabetes.csv"")"
+"0","head(data)"

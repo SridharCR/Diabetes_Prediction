@@ -2,13 +2,10 @@
 title: "Prediction of Diabetes"
 author: "Sridhar"
 date: "August 8, 2018"
-output:
-  word_document: default
-  pdf_document: default
-  html_document:
-      self_contained: false
-      keep_md: true
-      always_alow_html: yes
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 ## Introduction
 
@@ -26,7 +23,7 @@ library(ROCR)
 ## Load the data
 The observations of the people are stored in a CSV format, named diabetes.csv.The data is loaded in the environment.Let's check how the data is structured.
 ```{r}
-data = read.csv("Data/diabetes.csv")
+data = read.csv("C:/Users/crsri/Documents/Diabetes_Prediction/Data/diabetes.csv")
 head(data)
 summary(data)
 str(data)

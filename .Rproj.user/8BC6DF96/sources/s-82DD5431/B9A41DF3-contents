@@ -2,10 +2,13 @@
 title: "Prediction of Diabetes"
 author: "Sridhar"
 date: "August 8, 2018"
-output: 
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+      self_contained: false
+      keep_md: true
+      always_alow_html: yes
 ---
 ## Introduction
 
