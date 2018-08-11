@@ -14,6 +14,7 @@ output:
 ## Loading the required libraries
 ```{r warning=FALSE}
 library(ggplot2)
+library('ggvis')
 library(corrplot)
 library(caTools)
 library(ROCR)
@@ -45,7 +46,17 @@ A matrix of scatterplots is produce for this dataset.
 ```{r}
 pairs(data, col=data$Outcome)
 ```
+```{r}
+data %>% ggvis(~Glucose,~Insulin,fill =~Outcome) %>% layer_points()
+```
 
+```{r}
+data %>% ggvis(~BMI,~DiabetesPedigreeFunction,fill =~Outcome) %>% layer_points()
+```
+
+```{r}
+data %>% ggvis(~Age,~Pregnancies,fill =~Outcome) %>% layer_points()
+```
 
 ## Preparing the data
 
