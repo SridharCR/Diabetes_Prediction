@@ -1,0 +1,118 @@
+---
+title: "Anomaly Detection"
+author: "Sridhar"
+date: "July 4, 2018"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+## Libraries
+
+Loading the required libraries!
+
+```{r warning=FALSE}
+library(tuneR)
+library(AnomalyDetection)
+```
+
+## 10Hz Signal
+
+The signal of 10Hz is generated, which is stored in Waveform object(S4).From that object,I have retrieved and stored on the (y1)array structure.
+
+```{r}
+Wobj <- sine(10, duration = 10000)
+y1 <-slot(Wobj, "left")
+plot(Wobj)
+```
+
+## 30Hz Signal
+
+The signal of 30Hz is generated, which is stored in Waveform object(S4).From that object,I have retrieved and stored on the (y2)array structure.
+
+```{r}
+Wobj2 <- sine(30, duration = 10000)
+y2 <-slot(Wobj2, "left")
+plot(Wobj2)
+```
+
+## 50Hz Signal
+
+The signal of 50Hz is generated, which is stored in Waveform object(S4).From that object,I have retrieved and stored on the (y3)array structure.
+
+```{r}
+Wobj3 <- sine(50, duration = 10000)
+y3 <-slot(Wobj3, "left")
+plot(Wobj3)
+```
+
+## Creating the dataset
+
+I have added the signals y1,y2 and y3 and created a dataframe. The dataframe is then written to a filel called sineData.csv.The dataset has 10k rows of data for this sample.
+
+```{r}
+sri <- data.frame(y1, y2, y3)
+sri$y <- y1 + y2+ y3
+signal <- sri$y
+x <- 1:10000
+plot(signal)
+sridhar <- data.frame(x,sri)
+write.csv(sridhar, file = "sineData.csv")
+```
+## Configuring the dataset
+
+The dataset is been modified since, it should only contain the timestamp and the cumulative value. So I'm just removing the values of y1,y2,y3. To be similar to the realtime data, I have added the origin date, for now they are in seconds.
+
+```{r}
+sridhar$y1 <- NULL
+sridhar$y2 <- NULL
+sridhar$y3 <- NULL
+
+sridhar$x <- as.POSIXct(sridhar$x, origin = "2018-01-01")
+plot(sridhar)
+```
+
+## Anomaly Introduction
+
+I have changed a value of the dataset, for now to check with the model works.Then I'll introduce much more anomalies, so that it can be fine tuned.
+
+```{r}
+sridhar_a <- sridhar
+#sridhar_a[3000,2] = 0.4
+#plot(sridhar_a)
+i = 0
+while(i < 20)
+{
+index = as.integer(runif(1,min = 1, max = 10000))
+#print(index)
+value = runif(1,min = -5,max = 5)
+#print(value)
+sridhar_a[index,2] = value
+i = i+1
+}
+plot(sridhar_a)
+sridhar <- sridhar_a
+write.csv(sridhar, file = "sineData.csv")
+
+```
+
+##Anomaly Detection
+
+Algorithmm : Seasonal hybrid ESD
+
+```{r}
+sridhar$x = NULL
+res = AnomalyDetectionVec(sridhar, max_anoms=0.075, period = 6.5, longterm_period = 14,direction='both', plot=TRUE)
+res$plot
+```
+
+
+#References
+
+[1]https://github.com/twitter/AnomalyDetection
+
+[2]Automatic Anomaly Detection in the Cloud Via Statistical Learning
+   Jordan Hochenbaum Owen S. Vallis Arun Kejariwal,Twitter Inc
+   https://arxiv.org/pdf/1704.07706.pdf
+   
+[3]https://datascienceplus.com/anomaly-detection-in-r-the-tidy-way/
