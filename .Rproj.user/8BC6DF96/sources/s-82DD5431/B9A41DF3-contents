@@ -9,12 +9,12 @@ output:
 ---
 ## Introduction
 
-
+The diabetes is threatening a lot of people nowadays, without having a perfect cure for it.There are actually two types of diabetes,namely Type 1 and Type 2.The type 2 diabetes is commonly called as diabetes mellitus.It can be defined as a chronic condition that affects the way the body processes blood sugar (glucose).We consider the mellitus here.After deep researches we found that, that some parameters are directly responsible to for the mellitus to occur.By using the data of the people with and without diabetes,a dataset has been build.We use that dataset to classify the people who are in the risk of getting diabetes.
 
 ## Loading the required libraries
-```{r warning=FALSE}
+```{r message=FALSE,warning=FALSE}
 library(ggplot2)
-library('ggvis')
+library(ggvis)
 library(corrplot)
 library(caTools)
 library(ROCR)
@@ -23,7 +23,7 @@ library(ROCR)
 ## Load the data
 The observations of the people are stored in a CSV format, named diabetes.csv.The data is loaded in the environment.Let's check how the data is structured.
 ```{r}
-data = read.csv("diabetes.csv")
+data = read.csv("Data/diabetes.csv")
 head(data)
 summary(data)
 str(data)
@@ -31,7 +31,7 @@ str(data)
 
 ## Correlations
 
-The proportionalities of the attributes of the data can be identified by the  correlation coefficient,either numerically or visually.
+The proportionalities of the attributes of the data can be identified by the  correlation coefficient,either numerically or visually.They helps to know which attributes are highy dependent on the prediction variable:Outcome.
 ```{r}
 correlations <- cor(data)
 correlations
@@ -46,14 +46,20 @@ A matrix of scatterplots is produce for this dataset.
 ```{r}
 pairs(data, col=data$Outcome)
 ```
+### Glucose and Insulin
+
+The glucose and the insulin are the major factors of the diabetes...which in turn have direct proportionality in the future during the diabetes.They are the major cause of the occurence.They are strong correlated on each other.
 ```{r}
 data %>% ggvis(~Glucose,~Insulin,fill =~Outcome) %>% layer_points()
 ```
-
+### BMI ad DiabetesPedigreeFunction
+The BMI and DiabetesPedigreeFunction is plotted here.
 ```{r}
 data %>% ggvis(~BMI,~DiabetesPedigreeFunction,fill =~Outcome) %>% layer_points()
 ```
+### Age and Pregnancies
 
+The males have 0 for the pregnancy attribute, which is why we find a lot of values plottinh zero in this grpah.
 ```{r}
 data %>% ggvis(~Age,~Pregnancies,fill =~Outcome) %>% layer_points()
 ```
@@ -78,15 +84,15 @@ model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness 
 summary(model)
 ```
 
+## Prediction
+The trained model is used to predict the data for the testing data and for the training data(For checking accuracy purposes and for ROC curve)
 ```{r}
 predict_train <- predict(model, type = 'response')
 predict_test <- predict(model, newdata = data_test, type = 'response')
 
 ```
 
-```{r}
-table(data_train$Outcome, predict_train > 0.5)
-```
+## ROC Curve
 
 ```{r}
 
@@ -98,7 +104,7 @@ plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
 
 ## Comparison
 
-By comparing the real values with the real data, we can see the how our machine learning algorithm performs !
+By comparing the real values with the real data, we can see the how our machine learning algorithm performs.
 ```{r}
 predict_test_c = predict_test
 i = 1
