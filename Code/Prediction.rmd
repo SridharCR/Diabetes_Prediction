@@ -20,7 +20,7 @@ library(caTools)
 library(ROCR)
 ```
 
-## Load the data
+## Data Loading
 The observations of the people are stored in a CSV format, named diabetes.csv.The data is loaded in the environment.Let's check how the data is structured.
 ```{r}
 data = read.csv("C:/Users/crsri/Documents/Diabetes_Prediction/Data/diabetes.csv")
@@ -126,3 +126,6 @@ compare
 ## Conclusion
 
 The results can be improved by applyting the feature scaling and data cleaning.From this project we predict the type 2 diabetes, commonly called as diabetes mellitus.As a result it can help to improve their health conditions.
+
+### Things to do in future
+Data cleaning and Feature Scaling have to be done with the data.Then running the prepared data with the logistic regression to get the improved results.

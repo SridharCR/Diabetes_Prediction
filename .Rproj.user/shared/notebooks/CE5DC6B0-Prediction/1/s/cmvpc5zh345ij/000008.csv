@@ -1,8 +1,0 @@
-"0","data = read.csv(""data/diabetes.csv"")"
-"2","Warning messages:
-"
-"2","1: package ‘ROCR’ was built under R version 3.5.1 
-"
-"2","2: package ‘gplots’ was built under R version 3.5.1 
-"
-"0","head(data)"
