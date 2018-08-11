@@ -52,7 +52,7 @@ data_test <- subset(data, split == FALSE)
 
 ## Logistic regression
 
-The Logistic regression helps to classify the concern person will get diabetes or not in the near future.
+The Logistic regression helps to classify the concern person will get diabetes or not.Since we are using the logistic regression we have to mention that, family = binomial.We are using all the attributes we have in the dataset.Let us take a look at the summary.
 ```{r}
 model <- glm (Outcome ~ .-Pregnancies + Glucose + BloodPressure + SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + Age, data = data_train, family = binomial)
 summary(model)
@@ -74,6 +74,25 @@ ROCRpred <- prediction(predict_train, data_train$Outcome)
 ROCRperf <- performance(ROCRpred, 'tpr','fpr')
 plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
 
+```
+
+## Comparison
+
+By comparing the real values with the real data, we can see the how our machine learning algorithm performs !
+```{r}
+predict_test_c = predict_test
+i = 1
+while(i <= length(predict_test))
+{
+  if(predict_test[i] < 0.5)
+    predict_test_c[i] = 0
+  else
+    predict_test_c[i] = 1
+  i = i + 1;
+}
+compare <- data.frame(data_test$Outcome,predict_test_c)
+colnames(compare) <- c("Obseerved Values","PRedicted values")
+compare
 ```
 
 
