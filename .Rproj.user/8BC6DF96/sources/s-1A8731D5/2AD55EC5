@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "1907355073",
     "id" : "2AD55EC5",
-    "lastKnownWriteTime" : 1533975234,
-    "last_content_update" : 1533975234865,
+    "lastKnownWriteTime" : 1533983678,
+    "last_content_update" : 1533983678159,
     "path" : "~/Diabetes_Prediction/Code/Prediction.rmd",
     "project_path" : "Code/Prediction.rmd",
     "properties" : {
-        "cursorPosition" : "25,62",
-        "scrollLine" : "18"
+        "cursorPosition" : "7,21",
+        "scrollLine" : "0"
     },
     "relative_order" : 6,
     "source_on_save" : false,
