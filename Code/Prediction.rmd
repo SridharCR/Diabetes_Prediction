@@ -46,17 +46,21 @@ A matrix of scatterplots is produce for this dataset.
 ```{r}
 pairs(data, col=data$Outcome)
 ```
+
 ### Glucose and Insulin
 
 The glucose and the insulin are the major factors of the diabetes...which in turn have direct proportionality in the future during the diabetes.They are the major cause of the occurence.They are strong correlated on each other.
 ```{r}
 data %>% ggvis(~Glucose,~Insulin,fill =~Outcome) %>% layer_points()
 ```
+
 ### BMI ad DiabetesPedigreeFunction
+
 The BMI and DiabetesPedigreeFunction is plotted here.
 ```{r}
 data %>% ggvis(~BMI,~DiabetesPedigreeFunction,fill =~Outcome) %>% layer_points()
 ```
+
 ### Age and Pregnancies
 
 The males have 0 for the pregnancy attribute, which is why we find a lot of values plottinh zero in this grpah.
@@ -85,6 +89,7 @@ summary(model)
 ```
 
 ## Prediction
+
 The trained model is used to predict the data for the testing data and for the training data(For checking accuracy purposes and for ROC curve)
 ```{r}
 predict_train <- predict(model, type = 'response')
@@ -128,4 +133,5 @@ compare
 The results can be improved by applyting the feature scaling and data cleaning.From this project we predict the type 2 diabetes, commonly called as diabetes mellitus.As a result it can help to improve their health conditions.
 
 ### Things to do in future
+
 Data cleaning and Feature Scaling have to be done with the data.Then running the prepared data with the logistic regression to get the improved results.

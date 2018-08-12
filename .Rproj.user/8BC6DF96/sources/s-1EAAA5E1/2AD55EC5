@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1888163760",
+    "hash" : "1831686887",
     "id" : "2AD55EC5",
-    "lastKnownWriteTime" : 1533991404,
-    "last_content_update" : 1533991404209,
+    "lastKnownWriteTime" : 1534070049,
+    "last_content_update" : 1534070049855,
     "path" : "~/Diabetes_Prediction/Code/Prediction.rmd",
     "project_path" : "Code/Prediction.rmd",
     "properties" : {
-        "cursorPosition" : "7,21",
-        "scrollLine" : "0"
+        "cursorPosition" : "135,0",
+        "scrollLine" : "30"
     },
     "relative_order" : 6,
     "source_on_save" : false,
