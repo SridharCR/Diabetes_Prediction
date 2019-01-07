@@ -1,7 +1,7 @@
 # Prediction of diabetes - Type 2 (Mellitus)
 Hosted Link : [Click here](http://rpubs.com/SridharCR/diabetes-prediction)
 
-This is a machine learning project based on the prediction of type 2 diabetes, with a given data. It uses logistic regression to classify the diabetic outcomes of each person's record.The diabetes is growing threat nowadays, one of the rasons being that there is no perfect cure for it. There are actually two types of diabetes, namely
+This is a machine learning project based on the prediction of type 2 diabetes, with a given data. It uses logistic regression to classify the diabetic outcomes of each person's record.The diabetes is growing threat nowadays, one of the reasons being that there is no perfect cure for it. There are actually two types of diabetes, namely
   - Type 1
   - Type 2
 
